@@ -1,24 +1,36 @@
-function treeSum(parameters) {
-    let ans=0;// результат суммирования будет в этой переменной
-    if(Array.isArray(parameters)){//проверка пришёл массив
-        // Пришёл массив
-        for (let index = 0; index < parameters.length; index++) {// по каждому элементу прохожу
-            if(Array.isArray(parameters[index])){// проверка что элемент массива - массив
-                //да элемент массива являляется массивом
-                ans += treeSum(parameters[index]) // запускаю рекурсию, возрат сумма элеметов массива
-            } else {
-                // элемент массива просто число
-                ans += parameters[index];
-            }
-        }
-    }
-    return ans;
-}
+//решение с "чистой функцией"
+let str;
+// do {
+//     str = prompt("введите строку на русском языке!");
+//     str = String(str);// если пользователь нажал Отмена то возращается null приведение превращает в строку и проверка на 'null'
+// } while (  str.length == 0  || str == 'null');
+str = "окещлещрлещлЗЩлазлвзщылавзщыла взщыалвщыаыЛВЩЗФЫВЛ ФЫВЛФЫЩв";
 
-let testTask05 =    [5,7,
-                    [4, [2], 8, [1,3], 2],
-                    [9,[]],
-                    1,8
-                    ]
-console.log(treeSum(testTask05));
-console.log(treeSum([1,2,3,4,5,[1,2,2]]));
+function getNumberForEach(str) {
+    let ans = 0; //переменная подсчёта гластных
+    let newStrToArray = []; //массив для храниниия элеметов строки
+    newStrToArray = str.split('');
+    newStrToArray.forEach(element => {
+        element = element.toLowerCase();
+        if (element == 'а' || element == 'о' || element == 'и' ||
+            element == 'е' || element == 'ё' || element == 'э' ||
+            element == 'ы' || element == 'у' || element == 'ю' || element == 'я'){
+                ans++;
+            }        
+    });
+    return ans;        
+}
+console.log(getNumberForEach(str));
+
+function getNumberfilter(str) {
+    let ans = 0; //переменная подсчёта гластных
+
+    return ans;  
+}
+console.log(getNumberForEach(str));
+
+function getNumberReduce(str) {
+    let ans = 0; //переменная подсчёта гластных
+
+    return ans;  
+}
