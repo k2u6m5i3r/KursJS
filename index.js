@@ -13,7 +13,7 @@ function getNumberLiter(str) {
         const element = str[index].toLowerCase();
         if (element == 'а' || element == 'о' || element == 'и' ||
             element == 'е' || element == 'ё' || element == 'э' ||
-            element == 'ы' || element == 'у' || element == 'ю' || element == 'я'){
+            element == 'ы' || element == 'у' || element == 'ю' || element == 'я') {
                 ans++;
             }
     }
