@@ -1,10 +1,10 @@
 //решение с "чистой функцией"
 let str;
-// do {
-//     str = prompt("введите строку на русском языке!");
-//     str = String(str);// если пользователь нажал Отмена то возращается null приведение превращает в строку и проверка на 'null'
-// } while (  str.length == 0  || str == 'null');
-str = "окещлещрлещлЗЩлазлвзщылавзщыла взщыалвщыаыЛВЩЗФЫВЛ ФЫВЛФЫЩв";
+do {
+    str = prompt("введите строку на русском языке!");
+    str = String(str);// если пользователь нажал Отмена то возращается null приведение превращает в строку и проверка на 'null'
+} while (  str.length == 0  || str == 'null');
+// str = "окещлещрлещлЗЩлазлвзщылавзщыла взщыалвщыаыЛВЩЗФЫВЛ ФЫВЛФЫЩв";
 
 function getNumberForEach(str) {
     let ans = 0; //переменная подсчёта гластных
@@ -14,7 +14,7 @@ function getNumberForEach(str) {
         element = element.toLowerCase();
         if (element == 'а' || element == 'о' || element == 'и' ||
             element == 'е' || element == 'ё' || element == 'э' ||
-            element == 'ы' || element == 'у' || element == 'ю' || element == 'я'){
+            element == 'ы' || element == 'у' || element == 'ю' || element == 'я') {
                 ans++;
             }        
     });
@@ -29,7 +29,7 @@ function getNumberfilter(str) {
         element = element.toLowerCase();
         if (element == 'а' || element == 'о' || element == 'и' ||
         element == 'е' || element == 'ё' || element == 'э' ||
-        element == 'ы' || element == 'у' || element == 'ю' || element == 'я'){  
+        element == 'ы' || element == 'у' || element == 'ю' || element == 'я') {  
             return element;
         } 
     }) 
@@ -45,14 +45,12 @@ function getNumberReduce(str) {
         element = element.toLowerCase();
         if(element == 'а' || element == 'о' || element == 'и' ||
         element == 'е' || element == 'ё' || element == 'э' ||
-        element == 'ы' || element == 'у' || element == 'ю' || element == 'я'){
-            // console.log(element);
-            //acc.push(element);
+        element == 'ы' || element == 'у' || element == 'ю' || element == 'я') {
             acc++;
         }
         return acc;
     }, 0);
-    // console.log(ans);
+
     return ans;  
 }
 console.log(getNumberReduce(str));
