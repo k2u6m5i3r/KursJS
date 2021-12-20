@@ -1,3 +1,7 @@
+/*  {
+	margin: 0;
+	padding: 0;
+} */
 html, body {
     height: 100%;
     line-height: 1;
@@ -5,15 +9,71 @@ html, body {
     color: #252b42;
     font-weight: 500;
     font-family: Montserrat; 
+    background-color: coral;
+}
+.wrapper{
+    background: #FAFAFA;
+    display: flex;/* Раз */
+    flex-direction: column;/*Два*/
+    background-color:  gray;
 }
 ._container {
-    max-width: 1046px;
-    padding: 0px 15px;
-    margin: 0px auto;
-    box-sizing: content-box;
-    background-color: aqua; 
+    margin: 0 auto;
+    /* width: 1024px; */
 }
-.menu{
-    height: 100%;
+.page{
+    flex: 1 0 auto;
+    background-color: chartreuse;
+}
+/* start GAMES*/
+
+.gemes-pravilo{
+    padding: 35px 15px;
+}
+.games-three-columns {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+.games-three-columns-item {
+}
+.games-four-columns{
+
+    display: flex;
+    justify-content: space-around;
+}
+.games-four-columns-items{
+    width: 35px;
+}
+.games-four-columns-items label {
+    padding-bottom: 15px;
+    display: block;
+}
+input[type="radio"]:checked, 
+input[type="radio"]:not(:checked) 
+{
+    position: absolute;
+    left: -9999px;
+}
+input[type="radio"]:checked + label, 
+input[type="radio"]:not(:checked) + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    line-height: 20px;
+    cursor: pointer;
+}
+.number1 {
+}
+.number2 {
+}
+.number3 {
+}
+.number4 {
+}
+/* end   GAMES*/
+.footer{
+    background-color: blueviolet;
+    flex: 0 0 auto;
 }
     
