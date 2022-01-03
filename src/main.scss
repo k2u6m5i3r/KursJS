@@ -1,3 +1,38 @@
 body * {
     outline: 1px solid lightgrey;
 }
+//ограничивающий контейнер
+._container{
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+// Сброс ul ol 
+ul[class],
+ol[class] {
+  list-style: none;
+}
+.header{
+    display: flex;
+    align-items:center;
+    // justify-content: space-between;
+    height: 80px;
+    &__logo{
+        background: no-repeat url('./img/logotip.png');
+        // background-size: cover;
+        height: 100%;
+        width: 25%;
+    }
+    &__menu{
+        width: 75%;
+        .menu{
+            display: flex;
+            justify-content: space-around;
+            color: red;
+            &__item{
+                text-transform: uppercase;
+                font-size: 24px;
+            }
+        }       
+    }
+}
