@@ -6,11 +6,18 @@ body * {
     max-width: 920px;
     margin: 0 auto;
 }
-
+body{
+    background-image: linear-gradient(to top, rgba(3, 11, 242, 0.857), rgba(62, 220, 23, 0.405)), url('./img/ground-2.png');
+    background-size: cover;
+    
+}
 // Сброс ul ol 
 ul[class],
 ol[class] {
   list-style: none;
+}
+.wrapper{
+    background-image: linear-gradient( 180deg, #65fdf0c7 10%, #8c9499c7 100%);
 }
 .header{
     display: flex;
@@ -19,7 +26,6 @@ ol[class] {
     height: 80px;
     &__logo{
         background: no-repeat url('./img/logotip.png');
-        // background-size: cover;
         height: 100%;
         width: 25%;
     }
@@ -41,48 +47,46 @@ ol[class] {
         }
     } 
 }
-.gamesBullCows-pravilo{
-    padding: 35px 15px;
-}
-.gamesBullCows-three-columns {
-    display: flex;
-    justify-content: space-between;
-    padding: 25px;
-}
-.gamesBullCows-three-columns-item {
-}
-.gamesBullCows-four-columns{
+.gamesBullCows{
+    &-pravilo{
+        padding: 35px 15px;
+    }
+    &-three-columns {
+        display: flex;
+        justify-content: space-between;
+        padding: 25px;
+    }
+    &-four-columns{
 
-    display: flex;
-    justify-content: space-around;
+        display: flex;
+        justify-content: space-around;
+    }
+    &-four-columns-items{
+        width: 35px;
+        label {
+                padding-bottom: 15px;
+                display: block;
+        }
+    }
+
+    input[type="radio"]:checked, 
+    input[type="radio"]:not(:checked) 
+    {
+        position: absolute;
+        left: -9999px;
+    }
+    .gamesBullCows-three-columns-item {
+    }
+    
+    .number1 {
+    }
+    .number2 {
+    }
+    .number3 {
+    }
+    .number4 {
+    }
 }
-.gamesBullCows-four-columns-items{
-    width: 35px;
-}
-.gamesBullCows-four-columns-items label {
-    padding-bottom: 15px;
-    display: block;
-}
-input[type="radio"]:checked, 
-input[type="radio"]:not(:checked) 
-{
-    position: absolute;
-    left: -9999px;
-}
-input[type="radio"]:checked + label, 
-input[type="radio"]:not(:checked) + label {
-    display: inline-block;
-    position: relative;
-    padding-left: 28px;
-    line-height: 20px;
-    cursor: pointer;
-}
-.number1 {
-}
-.number2 {
-}
-.number3 {
-}
-.number4 {
-}
+
+
 /* end   GAMES gamesBullCows*/
