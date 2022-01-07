@@ -1,8 +1,10 @@
-function addMyElementDiv(typeClass, typeId, content){
-    let result = document.createElement("div");
+function addMyElement(typeBlock ,typeClass, typeId, content){
+    let result = document.createElement(typeBlock);
     result.className = typeClass;
     result.id = typeId;
-    result.appendChild(document.createTextNode(content));
+    if(console.length != 0){
+        result.appendChild(document.createTextNode(content));
+    }
     return result;
 }
 function addMyElementBtn(typeClass, typeId, content){
@@ -14,4 +16,4 @@ function addMyElementBtn(typeClass, typeId, content){
     return result;
 }
 
-export {addMyElementDiv, addMyElementBtn};
+export {addMyElement, addMyElementBtn};
