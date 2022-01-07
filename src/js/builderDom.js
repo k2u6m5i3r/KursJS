@@ -7,13 +7,13 @@ function addMyElement(typeBlock ,typeClass, typeId, content){
     }
     return result;
 }
-function addMyElementBtn(typeClass, typeId, content){
+function addMyElementInput(typeInput, typeClass, typeId, content){
     let result = document.createElement("input");
-    result.type = "button";
+    result.type = typeInput;
     result.value = content;
     result.className = typeClass;
     result.id = typeId;
     return result;
 }
 
-export {addMyElement, addMyElementBtn};
+export {addMyElement, addMyElementInput};

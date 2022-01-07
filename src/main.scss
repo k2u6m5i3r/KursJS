@@ -1,5 +1,5 @@
 body * {
-    outline: 1px solid lightgrey;
+    // outline: 1px solid lightgrey;
 }
 //ограничивающий контейнер
 ._container{
@@ -64,21 +64,45 @@ ol[class] {
     &-pravilo{
         padding: 35px 15px;
     }
-    &-games {
+    &-three-columns {
         display: flex;
         justify-content: space-between;
         padding: 25px;
+        &-item{
+            // background-color: red;
+            #columns-item-image-bull{
+                background: no-repeat url('./img/bull.png');
+                width: 128px;
+                height: 128px;
+            }
+            #columns-item-image-cows{
+                background: no-repeat url('./img/cows.png');
+                background-size: contain;
+                width: 128px;
+                height: 128px;
+            }
+            .columns-item-content{
+                padding: 10px 0px;
+                text-align: center;
+                font-size: 36px;
+            }
+        }
     }
-    &-four-columns{
 
+    &-four-columns{
+        text-align: center;
         display: flex;
         justify-content: space-around;
     }
     &-four-columns-items{
+
         width: 35px;
         label {
-                padding-bottom: 15px;
-                display: block;
+            cursor: pointer;
+            border: 3px solid grey;
+            padding: 3px;
+            display: block;
+            margin-left: 5px;
         }
     }
 
@@ -88,8 +112,7 @@ ol[class] {
         position: absolute;
         left: -9999px;
     }
-    .gamesBullCows-three-columns-item {
-    }
+
     
     .number1 {
     }
