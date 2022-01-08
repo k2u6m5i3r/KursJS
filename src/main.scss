@@ -61,12 +61,13 @@ ol[class] {
 
 .gamesBullCows{
     // display: none;
-    &-pravilo{
+    &-content{
         padding: 35px 15px;
     }
-    &-three-columns {
+    &-columns {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         padding: 25px;
         &-item{
             // background-color: red;
@@ -86,9 +87,27 @@ ol[class] {
                 text-align: center;
                 font-size: 36px;
             }
-        }
-    }
+            .logBullCows{
+                width: 275px;
+                text-align: center;
+                &-error{
+                    height: 35px;
+                    color: red;
 
+                    font-size: 16px;
+                    text-transform: uppercase;
+                }
+                &-log{
+                    
+                    margin-top: 10px;
+                    font-size: 20px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+    }
+    
     &-four-columns{
         text-align: center;
         display: flex;
@@ -96,13 +115,17 @@ ol[class] {
     }
     &-four-columns-items{
 
-        width: 35px;
+        width: 55px;
         label {
             cursor: pointer;
             border: 3px solid grey;
             padding: 3px;
             display: block;
             margin-left: 5px;
+        }
+        .number-itog{
+            font-size: 24px;
+            font-weight: 700;
         }
     }
 
@@ -133,7 +156,7 @@ ol[class] {
 /* end   GAMES gamesBullCows*/
 
 
-.btn{
+.button{
     margin: 15px;
 }
 

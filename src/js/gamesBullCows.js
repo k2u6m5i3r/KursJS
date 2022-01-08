@@ -1,4 +1,4 @@
-function getNumberInArray() {
+function getNumberInArray() { //инициализация компьютера
     let arrayNumber = new Array();
     let tempSet = new Set();
 
@@ -10,15 +10,15 @@ function getNumberInArray() {
     tempSet.forEach(function(value, valueAgain, set) { // заполняю массив
         arrayNumber.push(value);
     })
+    // console.log('init');
     return arrayNumber;
 }
-
 
 let userNumber = [1,2,3,4];
 let computerNumber = getNumberInArray();
 
-console.log(computerNumber);
-console.log(userNumber);
+// console.log(computerNumber);
+// console.log(userNumber);
 
 function checkingNumberOfCows(numberFromUser, numberFromComputer) { // проверка количество коров
     let ans = 0;
@@ -31,6 +31,7 @@ function checkingNumberOfCows(numberFromUser, numberFromComputer) { // пров�
     }    
     return ans;    
 }
+
 function checkingNumberOfBulls(numberFromUser, numberFromComputer) { // проверка количество быков
     let ans = 0;
 
@@ -39,9 +40,19 @@ function checkingNumberOfBulls(numberFromUser, numberFromComputer) { // пров
             ans++;
         }
     }
-    
     return ans;   
 }
 
-console.log(`количество быков`,checkingNumberOfBulls(userNumber, computerNumber));
-console.log(`количество коров`,checkingNumberOfCows(userNumber, computerNumber));
+// console.log(`количество быков`,checkingNumberOfBulls(userNumber, computerNumber));
+// console.log(`количество коров`,checkingNumberOfCows(userNumber, computerNumber));
+function checkingNumberUser(numberFromUser){
+    let ans = false;
+    if(numberFromUser[0] != numberFromUser[1] && numberFromUser[1] != numberFromUser[2] && numberFromUser[2] != numberFromUser[3] ){
+        ans = true;
+    } else {
+        ans = false;
+    }
+    return ans;
+}
+
+export {getNumberInArray,  checkingNumberOfCows, checkingNumberOfBulls, checkingNumberUser}
