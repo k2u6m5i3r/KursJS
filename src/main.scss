@@ -34,13 +34,13 @@ ol[class] {
     align-items:center;
     // justify-content: space-between;
     height: 80px;
-    &__logo{
+    &-logo{
         background: no-repeat url('./img/logotip.png');
         background-size: contain;
         height: 100%;
         width: 25%;
     }
-    &__menu{
+    &-menu{
         width: 75%;
       
     }
@@ -48,7 +48,7 @@ ol[class] {
         display: flex;
         justify-content: space-around;
         color: rgba(33, 40, 233, 0.723);
-        &__item{
+        &-item{
             
             margin: 5px;
             text-transform: uppercase;
@@ -57,6 +57,11 @@ ol[class] {
         cursor: pointer;
 
     } 
+}
+.footer{
+    &-content{
+        text-align: center;
+    }
 }
 
 .gamesBullCows{
