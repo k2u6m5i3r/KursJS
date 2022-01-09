@@ -1,6 +1,11 @@
 {
-    "email-login":"e-mail или логин",
+    "emaillogin":"e-mail или логин",
     "password":"пароль",
-    "bntRegistration":"Регистрация",
-    "btnInput":"Вход"
+    "repassword":"повторить пароль",
+    "bntTabRegistration":"Регистрация",
+    "bntTabLogin":"Логирование",
+    "btnRegisration":"Зарегистрация",
+    "btnTabInput":"Вход",
+    "btnLogint":"Войти",
+    "btnReset": "Забыли пароль"
 }
