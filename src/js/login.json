@@ -4,8 +4,11 @@
     "repassword":"повторить пароль",
     "bntTabRegistration":"Регистрация",
     "bntTabLogin":"Логирование",
-    "btnRegisration":"Зарегистрация",
+    "bntTabReset":"Сброс пароля",
+    "btnLogin": "Перейти на логирование",
+    "btnRegisration":"Перейти на регистрацию",
     "btnTabInput":"Вход",
     "btnLogint":"Войти",
+    "btnResetInput": "Сбросить пароль",
     "btnReset": "Забыли пароль"
 }
