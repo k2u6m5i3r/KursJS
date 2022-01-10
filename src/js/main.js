@@ -21,20 +21,21 @@ let myDoc = document.getElementById("wrapper"); //получаю точеку в
 
 
 
-//header(myDoc);
+header(myDoc);
 
-// let blocContent = addMyElement("div", "content", "content", "")
-// myDoc.appendChild(blocContent);
+let blocContent = addMyElement("div", "content", "content", "")
+myDoc.appendChild(blocContent);
 
-// const gamesBullCowsHeaderClick = document.getElementById("gamesBullCowsHeader");
-// gamesBullCowsHeaderClick.onclick = function () {
+const gamesBullCowsHeaderClick = document.getElementById("gamesBullCowsHeader"); //нахожу кнопку и вызываю функцию построить игру
+gamesBullCowsHeaderClick.onclick = function () {
+    gamesBullCows(blocContent);// передаю узел куда нужно поместиться
+};
 
-//     gamesBullCows(blocContent);// передаю узел куда нужно поместиться
-// };
+gamesNim(blocContent);
 
-//footer();
+footer(myDoc);
 
-login(myDoc);
+//login(myDoc);
 
 function login(myDoc) {
         // получаю локально поля для заполнения формы
@@ -75,7 +76,6 @@ function login(myDoc) {
     passwordReset.appendChild(addMyElement("div", "resetPassword-text", "resetPassword-text", forLogin.emaillogin ));
     passwordReset.appendChild(addMyElementInput("text", "resetPassword-input-login", "resetPassword-input-login",""));
     passwordReset.appendChild(addMyElementInput("button","resetPassword-input","resetPassword-input",forLogin.btnResetInput));
-
     myForm.appendChild(passwordReset);
 
     myDoc.appendChild(myForm);
@@ -93,7 +93,7 @@ function header(myDoc) {//функция построить html header
     header.appendChild(menuHeader);                                                             //меню поместить в главный хеадер
     myDoc.appendChild(header);      //загрузить в документ
 }
-function footer(myDom) {
+function footer(myDoc) {
     // добавляю блок footer
  let footer =  addMyElement("footer", "footer", "footer", "");
  // контент в блок footer 
@@ -102,32 +102,40 @@ function footer(myDom) {
  
  myDoc.appendChild(footer); 
  }
-function gamesNim() {
-    // добавляю main с игрой Nim
-    // let gamesNim =  addMyElement("main", "gamesNim content", "gamesNim", "");
-    // myDoc.append(gamesNim);
-    //     // получаю локально поля для заполнения в игрк Ним
-    // let forGamesNim = "";
-    // readTextFile("./js/gamesNim.json", function(text){
-    //     var data = JSON.parse(text);
-    //     forGamesNim = data;
-    // });
 
-    // //Добавление main-gamesNim - блока для игры Ним
-    // // Добавление полк правило игры
-    // const paravilo = addMyElement("div", "gamesNim-pravilo", "gamesNim-pravilo", forGamesNim.pravilo);
-    // gamesNim.appendChild(paravilo);
-    // const poleGamesNim = addMyElement("div", "gamesNim-games", "gamesNim-games", "");
-    // gamesNim.appendChild(poleGamesNim);
-    // const statusGames = addMyElement("div", "gamesNim-status", "gamesNim-status", forGamesNim.status);
-    // gamesNim.appendChild(statusGames);
-    // const poleBtn = addMyElement("div", "gamesNim-btn btn", "gamesNim-btn", "");
-    // gamesNim.appendChild(poleBtn);
-    // const buttonNextStep = addMyElementInput("button", "btn-next button","gamesNim-btn-next",forGamesNim.buttonNextStep);
-    // poleBtn.appendChild(buttonNextStep);
-    // const buttonNewGames = addMyElementInput("button", "btn-newGames button","gamesNim-btn-newGames",forGamesNim.buttonNewGames);
-    // poleBtn.appendChild(buttonNewGames); 
-}    
+function gamesNim(myDoc) {
+    //добавляю main с игрой Nim
+    let gamesNim =  addMyElement("main", "gamesNim content", "gamesNim", "");
+    myDoc.append(gamesNim);
+        // получаю локально поля для заполнения в игрк Ним
+    let forGamesNim = "";
+    readTextFile("./js/gamesNim.json", function(text){
+        var data = JSON.parse(text);
+        forGamesNim = data;
+    });
+
+    //Добавление main-gamesNim - блока для игры Ним
+    const titelGames = addMyElement("div", "gamesNim-titel titel", "gamesNim-titel", forGamesNim.titel);
+    gamesNim.appendChild(titelGames);
+    // Добавление блок правило игры
+    const paravilo = addMyElement("div", "gamesNim-pravilo", "gamesNim-pravilo", forGamesNim.pravilo);
+    gamesNim.appendChild(paravilo);
+    const poleGamesNim = addMyElement("div", "gamesNim-games level", "gamesNim-games", "");
+    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level1", ""));
+    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level2", ""));
+    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level3", ""));
+    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level4", ""));
+    gamesNim.appendChild(poleGamesNim);
+    const statusGames = addMyElement("div", "gamesNim-status", "gamesNim-status", forGamesNim.status);
+    gamesNim.appendChild(statusGames);
+    const poleBtn = addMyElement("div", "gamesNim-btn btn", "gamesNim-btn", "");
+    gamesNim.appendChild(poleBtn);
+    const buttonNextStep = addMyElementInput("button", "btn-next button","gamesNim-btn-next",forGamesNim.buttonNextStep);
+    poleBtn.appendChild(buttonNextStep);
+    const buttonNewGames = addMyElementInput("button", "btn-newGames button","gamesNim-btn-newGames",forGamesNim.buttonNewGames);
+    poleBtn.appendChild(buttonNewGames); 
+}
+
 function gamesBullCows(blocContent) {
     //  добавляю main с игрой gamesBullCows
 

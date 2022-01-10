@@ -35,8 +35,9 @@ ol[class] {
     // justify-content: space-between;
     height: 80px;
     &-logo{
-        background: no-repeat url('./img/logotip.png');
+        background: no-repeat url('./img/logotip_v2.png');
         background-size: contain;
+
         height: 100%;
         width: 25%;
     }
@@ -49,13 +50,11 @@ ol[class] {
         justify-content: space-around;
         color: rgba(33, 40, 233, 0.723);
         &-item{
-            
             margin: 5px;
             text-transform: uppercase;
             font-size: 24px;
         }
         cursor: pointer;
-
     } 
 }
 .footer{
@@ -165,3 +164,7 @@ ol[class] {
     margin: 15px;
 }
 
+input {
+    font-family:inherit;
+    font-size: inherit;
+}
