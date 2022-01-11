@@ -35,52 +35,7 @@ gamesNim(blocContent);
 
 footer(myDoc);
 
-//login(myDoc);
 
-function login(myDoc) {
-        // получаю локально поля для заполнения формы
-        let forLogin = "";
-        readTextFile("./js/login.json", function(text){
-            var data = JSON.parse(text);
-            forLogin = data;
-        });
-        console.log(forLogin);
-    let myForm = addMyElement("div", "form", "form", "");
-    let registration = addMyElement("div", "form-registration registration","form-registration", ""); //Блок регистрации 
-    let loginInput = addMyElement("div", "form-login login","form-login", "");//Блок логирования
-    let passwordReset = addMyElement("div", "form-resetPassword resetPassword","form-resetPassword", ""); //Блок сброса пароля
-
-    loginInput.appendChild(addMyElement("h2", "login-titel", "login-titel", forLogin.bntTabLogin ));
-    loginInput.appendChild(addMyElement("div", "login-text", "login-text", forLogin.emaillogin ));
-    loginInput.appendChild(addMyElementInput("text", "login-input-login", "login-input-login",""));
-    loginInput.appendChild(addMyElement("div", "login-password", "login-password", forLogin.password ));
-    loginInput.appendChild(addMyElementInput("password", "login-input-password", "login-input-password",""));
-    loginInput.appendChild(addMyElementInput("button","bnt-login", "btn-login", forLogin.btnLogint ));
-    loginInput.appendChild(addMyElementInput("button","btn-LoginToRegistration", "btn-LoginToRegistration", forLogin.btnRegisration ));
-    loginInput.appendChild(addMyElementInput("button","bnt--pasword", "bnt-reset-pasword", forLogin.btnReset ));
-    myForm.appendChild(loginInput);
-
-    registration.appendChild(addMyElement("h2", "registration-titel", "registration-titel", forLogin.bntTabRegistration ));
-    registration.appendChild(addMyElement("div", "registration-text", "registration-text", forLogin.emaillogin ));
-    registration.appendChild(addMyElementInput("text", "registration-input-login", "registration-input-login",""));
-    registration.appendChild(addMyElement("div", "registration-password", "registration-password", forLogin.password ));
-    registration.appendChild(addMyElementInput("password", "registration-input-password", "registration-input-password",""));
-    registration.appendChild(addMyElement("div", "registration-repassword", "registration-repassword", forLogin.repassword ));
-    registration.appendChild(addMyElementInput("password", "registration-input-repassword", "registration-input-repassword",""));
-    registration.appendChild(addMyElementInput("button","bnt-registration", "btn-registration", forLogin.bntTabRegistration )); 
-    registration.appendChild(addMyElementInput("button", "btn-registationToLogin","btn-registationToLogin", forLogin.btnLogin ));
-    registration.appendChild(addMyElementInput("button","bnt-reset-pasword", "bnt-reset-pasword", forLogin.btnReset ));
-    myForm.appendChild(registration);
-
-    passwordReset.appendChild(addMyElement("h2", "resetPassword-titel", "resetPassword-titel", forLogin.bntTabReset ));
-    passwordReset.appendChild(addMyElement("div", "resetPassword-text", "resetPassword-text", forLogin.emaillogin ));
-    passwordReset.appendChild(addMyElementInput("text", "resetPassword-input-login", "resetPassword-input-login",""));
-    passwordReset.appendChild(addMyElementInput("button","resetPassword-input","resetPassword-input",forLogin.btnResetInput));
-    myForm.appendChild(passwordReset);
-
-    myDoc.appendChild(myForm);
-
-}
 
 function header(myDoc) {//функция построить html header
     // добавляю header
@@ -197,6 +152,11 @@ function gamesBullCows(blocContent) {
     poleNumbers.children[2].append(addDigit("3"));
     poleNumbers.children[3].append(addDigit("4"));
 
+    // модернизация
+    // poleNumbers.children[0].onclick=function (event) {
+    //     console.log(event.target);
+    // }  
+
     twoCollumn.appendChild(poleNumbers);
     // добавить событие на нажитие input-radio, чтобы потом достать цифру для числа в игре
     for(let j = 1; j <= 4; j++){
@@ -207,7 +167,7 @@ function gamesBullCows(blocContent) {
             }
         }
     }
-
+ 
     // третья колонка (Картинка + Число угадныых быков)  содержит два блока
     const threeCollumn = document.getElementById("gamesBullCows-columns-item-3");
     threeCollumn.append(addMyElement("div", "columns-item-image","columns-item-image-cows", ""));
