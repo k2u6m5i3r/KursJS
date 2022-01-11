@@ -153,9 +153,9 @@ function gamesBullCows(blocContent) {
     poleNumbers.children[3].append(addDigit("4"));
 
     // модернизация
-    // poleNumbers.children[0].onclick=function (event) {
-    //     console.log(event.target);
-    // }  
+    poleNumbers.children[0].onclick=function (event) {
+        console.log(event.target);
+    }  
 
     twoCollumn.appendChild(poleNumbers);
     // добавить событие на нажитие input-radio, чтобы потом достать цифру для числа в игре
