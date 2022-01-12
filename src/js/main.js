@@ -26,12 +26,27 @@ header(myDoc);
 let blocContent = addMyElement("div", "content", "content", "")
 myDoc.appendChild(blocContent);
 
-const gamesBullCowsHeaderClick = document.getElementById("gamesBullCowsHeader"); //нахожу кнопку и вызываю функцию построить игру
+const gamesBullCowsHeaderClick = document.getElementById("gamesBullCowsHeader"); //нахожу кнопку "Быки и коровы" и вызываю функцию построить игру
 gamesBullCowsHeaderClick.onclick = function () {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
     gamesBullCows(blocContent);// передаю узел куда нужно поместиться
 };
-
-gamesNim(blocContent);
+const gamesNimClick = document.getElementById("gamesNimHeader"); //нахожу кнопку "Ним" и вызываю функцию построить игру
+gamesNimClick.onclick = function () {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
+    gamesNim(blocContent);// передаю узел куда нужно поместиться
+};
+const aboutClick = document.getElementById("aboutHeader"); //нахожу кнопку "Ним" и вызываю функцию построить игру
+aboutClick.onclick = function () {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
+    //gamesNim(blocContent);// передаю узел куда нужно поместиться
+};
 
 footer(myDoc);
 
