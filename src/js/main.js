@@ -76,19 +76,16 @@ function gamesNim(myDoc) {
     const paravilo = addMyElement("div", "gamesNim-pravilo", "gamesNim-pravilo", forGamesNim.pravilo);
     gamesNim.appendChild(paravilo);
     const poleGamesNim = addMyElement("div", "gamesNim-games level", "gamesNim-games", "");
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level1", ""));
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level2", ""));
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level3", ""));
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level4", ""));
+    for(let i = 0; i <= 3; i++){//Создание 4х уровней игры Ним
+        poleGamesNim.appendChild(addMyElement("div", `gamesNim-level level-${i+1}`, `gamesNim-level${i+1}`, ""));//перевый уровень
+        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-titel`, `level-${i+1}-titel`,`Уровень ${i+1}`));
+        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-poleGames`, `level-${i+1}-poleGames`, ""));
+        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-status`, `level-${i+1}-status`, forGamesNim.status));
+        poleGamesNim.children[i].appendChild(addMyElementInput("button", `level-${i+1}-button-next`, `level-${i+1}-button-next`, forGamesNim.buttonNextStep));
+        poleGamesNim.children[i].appendChild(addMyElementInput("button", `level-${i+1}-button-newGames`, `level-${i+1}-button-newGames`, forGamesNim.buttonNewGames));
+    }
     gamesNim.appendChild(poleGamesNim);
-    const statusGames = addMyElement("div", "gamesNim-status", "gamesNim-status", forGamesNim.status);
-    gamesNim.appendChild(statusGames);
-    const poleBtn = addMyElement("div", "gamesNim-btn btn", "gamesNim-btn", "");
-    gamesNim.appendChild(poleBtn);
-    const buttonNextStep = addMyElementInput("button", "btn-next button","gamesNim-btn-next",forGamesNim.buttonNextStep);
-    poleBtn.appendChild(buttonNextStep);
-    const buttonNewGames = addMyElementInput("button", "btn-newGames button","gamesNim-btn-newGames",forGamesNim.buttonNewGames);
-    poleBtn.appendChild(buttonNewGames); 
+
 }
 
 function gamesBullCows(blocContent) {
@@ -117,16 +114,12 @@ function gamesBullCows(blocContent) {
     for(let i = 1; i <= 4; i++){
         threeСolumns.appendChild(addMyElement("div", "gamesBullCows-columns-item", "gamesBullCows-columns-item-"+i, ""));
     }
-
     threeСolumns.children[1].classList.add("gamesBullCows-four-columns");
-
     poleGamesBullCows.appendChild(threeСolumns);
     // первая колонка (Картинка + Число угаданных быков) содержит два блока
     const firstCollumn = document.getElementById("gamesBullCows-columns-item-1");
     firstCollumn.append(addMyElement("div", "columns-item-image","columns-item-image-bull", ""));
     firstCollumn.append(addMyElement("div", "columns-item-content","columns-item-content-bull", "0"));
-
-
     // ввод числа(быбор)
     const twoCollumn = document.getElementById("gamesBullCows-columns-item-2");
     let poleNumbers = new DocumentFragment();
