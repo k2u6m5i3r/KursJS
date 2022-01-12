@@ -85,7 +85,39 @@ function gamesNim(myDoc) {
         poleGamesNim.children[i].appendChild(addMyElementInput("button", `level-${i+1}-button-newGames`, `level-${i+1}-button-newGames`, forGamesNim.buttonNewGames));
     }
     gamesNim.appendChild(poleGamesNim);
+        //нарисовать каджый уровень
+    //нарисовать первый уровень
+    const gamesNimlevel_1 = document.getElementById("level-1-poleGames");
+    //нарисовать второй уровень
+    const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
+    //нарисовать третий уровень
+    const gamesNimlevel_3 = document.getElementById("level-3-poleGames");
+    //нарисовать четвёртый уровень
+    const gamesNimlevel_4 = document.getElementById("level-4-poleGames");
+        //отработать каждую кнопку на каджом уровне
+    const level_1_buttonNext = document.getElementById("level-1-button-next");
+    const level_1_buttonNewGames = document.getElementById("level-1-button-newGames");
+    
+    const level_2_buttonNext = document.getElementById("level-2-button-next");
+    const level_2_buttonNewGames = document.getElementById("level-2-button-newGames");
 
+    const level_3_buttonNext = document.getElementById("level-3-button-next");
+    const level_3_buttonNewGames = document.getElementById("level-3-button-newGames");
+
+    const level_4_buttonNext = document.getElementById("level-4-button-next");
+    const level_4_buttonNewGames = document.getElementById("level-4-button-newGames");
+
+    console.log( level_1_buttonNext);
+    console.log( level_1_buttonNewGames);
+    
+    console.log( level_2_buttonNext);
+    console.log( level_2_buttonNewGames);
+
+    console.log( level_3_buttonNext);
+    console.log( level_3_buttonNewGames);
+
+    console.log( level_4_buttonNext);
+    console.log( level_4_buttonNewGames);
 }
 
 function gamesBullCows(blocContent) {
@@ -145,10 +177,10 @@ function gamesBullCows(blocContent) {
     poleNumbers.children[2].append(addDigit("3"));
     poleNumbers.children[3].append(addDigit("4"));
 
-    // модернизация
-    poleNumbers.children[0].onclick=function (event) {
-        console.log(event.target);
-    }  
+    // // модернизация
+    // poleNumbers.children[0].onclick=function (event) {
+    //     console.log(event.target);
+    // }  
 
     twoCollumn.appendChild(poleNumbers);
     // добавить событие на нажитие input-radio, чтобы потом достать цифру для числа в игре
@@ -196,8 +228,8 @@ function gamesBullCows(blocContent) {
         let numberAll = document.getElementsByClassName('number-itog');
         let userNumber = [numberAll[0].textContent, numberAll[1].textContent, numberAll[2].textContent, numberAll[3].textContent];
         console.log(userNumber);
-        console.log(`количество быков`,checkingNumberOfBulls(userNumber, computerNumber));
-        console.log(`количество коров`,checkingNumberOfCows(userNumber, computerNumber));
+        // console.log(`количество быков`,checkingNumberOfBulls(userNumber, computerNumber));
+        // console.log(`количество коров`,checkingNumberOfCows(userNumber, computerNumber));
         let blokLog = document.getElementById("logBullCows-error");// блок с ошибкой или победой
         let blocImgSetBull = document.getElementById("columns-item-content-bull"); // поменять но картинкой подпись у быка
         let blocImgSetCows = document.getElementById("columns-item-content-cows"); // поменять но картинкой подпись у коровы
@@ -215,6 +247,29 @@ function gamesBullCows(blocContent) {
         } else {
             blokLog.textContent = forGamesBullCows.status_error1;
         }
+
+    }
+        //действие пользователя начать игру сначала
+    const userNewGames = document.getElementById('gamesBullCows-btn-newGames');
+    userNewGames.onclick = function (){
+        console.log("New Games");
+        // иницилизация игры заново 
+        computerNumber = getNumberInArray();//число от компьютера есть
+        // console.log("s");
+        console.log(computerNumber);
+        let blokLog = document.getElementById("logBullCows-error");// блок с ошибкой или победой
+        blokLog.textContent = "";
+        let blocImgSetBull = document.getElementById("columns-item-content-bull"); // поменять но картинкой подпись у быка
+        blocImgSetBull.textContent = "0";
+        let blocImgSetCows = document.getElementById("columns-item-content-cows"); // поменять но картинкой подпись у коровы
+        blocImgSetCows.textContent = "0";
+        let blogLogStep = document.getElementById("logBullCows-log"); // для храниния ходов
+        console.log(blogLogStep);
+        while (blogLogStep.firstChild) {
+            blogLogStep.firstChild.remove();
+        }
+        //blogLogStep.textContent = "";
+        console.log(blogLogStep);
 
     }
 
