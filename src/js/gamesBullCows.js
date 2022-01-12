@@ -47,10 +47,17 @@ function checkingNumberOfBulls(numberFromUser, numberFromComputer) { // пров
 // console.log(`количество коров`,checkingNumberOfCows(userNumber, computerNumber));
 function checkingNumberUser(numberFromUser){
     let ans = false;
-    if(numberFromUser[0] != numberFromUser[1] && numberFromUser[0] != numberFromUser[2] && numberFromUser[0] != numberFromUser[3] ){
-        ans = true;
-    } else {
-        ans = false;
+
+    // Проверить
+    for(let i = 0; i < 4; i++){
+        for(let j = i; j < 4; j++ ){
+            if(i != j)
+            if( numberFromUser[i] == numberFromUser[j]  ){
+                return false;
+            } else{
+               ans = true;
+            }
+        }
     }
     return ans;
 }
