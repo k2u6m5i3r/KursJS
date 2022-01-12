@@ -250,6 +250,7 @@ function gamesBullCows(blocContent) {
         let blocImgSetCows = document.getElementById("columns-item-content-cows"); // поменять но картинкой подпись у коровы
         let blogLogStep = document.getElementById("logBullCows-log"); // для храниния ходов
         if(checkingNumberUser(userNumber) ){// проверка корректности. нет повторений
+            console.log("Ошибка корректности");
             blokLog.textContent = ""; 
             let tempBull = checkingNumberOfBulls(userNumber, computerNumber);
             let tempCows = checkingNumberOfCows(userNumber, computerNumber);
