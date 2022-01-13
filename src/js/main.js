@@ -23,12 +23,27 @@ header(myDoc);
 let blocContent = addMyElement("div", "content", "content", "")
 myDoc.appendChild(blocContent);
 
-const gamesBullCowsHeaderClick = document.getElementById("gamesBullCowsHeader"); //нахожу кнопку и вызываю функцию построить игру
+const gamesBullCowsHeaderClick = document.getElementById("gamesBullCowsHeader"); //нахожу кнопку "Быки и коровы" и вызываю функцию построить игру
 gamesBullCowsHeaderClick.onclick = function () {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
     gamesBullCows(blocContent);// передаю узел куда нужно поместиться
 };
-
-gamesNim(blocContent);
+const gamesNimClick = document.getElementById("gamesNimHeader"); //нахожу кнопку "Ним" и вызываю функцию построить игру
+gamesNimClick.onclick = function () {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
+    gamesNim(blocContent);// передаю узел куда нужно поместиться
+};
+const aboutClick = document.getElementById("aboutHeader"); //нахожу кнопку "Ним" и вызываю функцию построить игру
+aboutClick.onclick = function () {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
+    about(blocContent);// передаю узел куда нужно поместиться
+};
 
 footer(myDoc);
 
@@ -73,19 +88,48 @@ function gamesNim(myDoc) {
     const paravilo = addMyElement("div", "gamesNim-pravilo", "gamesNim-pravilo", forGamesNim.pravilo);
     gamesNim.appendChild(paravilo);
     const poleGamesNim = addMyElement("div", "gamesNim-games level", "gamesNim-games", "");
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level1", ""));
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level2", ""));
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level3", ""));
-    poleGamesNim.appendChild(addMyElement("div", "gamesNim-level", "gamesNim-level4", ""));
+    for(let i = 0; i <= 3; i++){//Создание 4х уровней игры Ним
+        poleGamesNim.appendChild(addMyElement("div", `gamesNim-level level-${i+1}`, `gamesNim-level${i+1}`, ""));//перевый уровень
+        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-titel`, `level-${i+1}-titel`,`Уровень ${i+1}`));
+        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-poleGames`, `level-${i+1}-poleGames`, ""));
+        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-status`, `level-${i+1}-status`, forGamesNim.status));
+        poleGamesNim.children[i].appendChild(addMyElementInput("button", `level-${i+1}-button-next`, `level-${i+1}-button-next`, forGamesNim.buttonNextStep));
+        poleGamesNim.children[i].appendChild(addMyElementInput("button", `level-${i+1}-button-newGames`, `level-${i+1}-button-newGames`, forGamesNim.buttonNewGames));
+    }
     gamesNim.appendChild(poleGamesNim);
-    const statusGames = addMyElement("div", "gamesNim-status", "gamesNim-status", forGamesNim.status);
-    gamesNim.appendChild(statusGames);
-    const poleBtn = addMyElement("div", "gamesNim-btn btn", "gamesNim-btn", "");
-    gamesNim.appendChild(poleBtn);
-    const buttonNextStep = addMyElementInput("button", "btn-next button","gamesNim-btn-next",forGamesNim.buttonNextStep);
-    poleBtn.appendChild(buttonNextStep);
-    const buttonNewGames = addMyElementInput("button", "btn-newGames button","gamesNim-btn-newGames",forGamesNim.buttonNewGames);
-    poleBtn.appendChild(buttonNewGames); 
+        //нарисовать каджый уровень
+    //нарисовать первый уровень
+    const gamesNimlevel_1 = document.getElementById("level-1-poleGames");
+    //нарисовать второй уровень
+    const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
+    //нарисовать третий уровень
+    const gamesNimlevel_3 = document.getElementById("level-3-poleGames");
+    //нарисовать четвёртый уровень
+    const gamesNimlevel_4 = document.getElementById("level-4-poleGames");
+        //отработать каждую кнопку на каджом уровне
+    const level_1_buttonNext = document.getElementById("level-1-button-next");
+    const level_1_buttonNewGames = document.getElementById("level-1-button-newGames");
+    
+    const level_2_buttonNext = document.getElementById("level-2-button-next");
+    const level_2_buttonNewGames = document.getElementById("level-2-button-newGames");
+
+    const level_3_buttonNext = document.getElementById("level-3-button-next");
+    const level_3_buttonNewGames = document.getElementById("level-3-button-newGames");
+
+    const level_4_buttonNext = document.getElementById("level-4-button-next");
+    const level_4_buttonNewGames = document.getElementById("level-4-button-newGames");
+
+    console.log( level_1_buttonNext);
+    console.log( level_1_buttonNewGames);
+    
+    console.log( level_2_buttonNext);
+    console.log( level_2_buttonNewGames);
+
+    console.log( level_3_buttonNext);
+    console.log( level_3_buttonNewGames);
+
+    console.log( level_4_buttonNext);
+    console.log( level_4_buttonNewGames);
 }
 
 function gamesBullCows(blocContent) {
@@ -114,16 +158,12 @@ function gamesBullCows(blocContent) {
     for(let i = 1; i <= 4; i++){
         threeСolumns.appendChild(addMyElement("div", "gamesBullCows-columns-item", "gamesBullCows-columns-item-"+i, ""));
     }
-
     threeСolumns.children[1].classList.add("gamesBullCows-four-columns");
-
     poleGamesBullCows.appendChild(threeСolumns);
     // первая колонка (Картинка + Число угаданных быков) содержит два блока
     const firstCollumn = document.getElementById("gamesBullCows-columns-item-1");
     firstCollumn.append(addMyElement("div", "columns-item-image","columns-item-image-bull", ""));
     firstCollumn.append(addMyElement("div", "columns-item-content","columns-item-content-bull", "0"));
-
-
     // ввод числа(быбор)
     const twoCollumn = document.getElementById("gamesBullCows-columns-item-2");
     let poleNumbers = new DocumentFragment();
@@ -149,10 +189,10 @@ function gamesBullCows(blocContent) {
     poleNumbers.children[2].append(addDigit("3"));
     poleNumbers.children[3].append(addDigit("4"));
 
-    // модернизация
-    poleNumbers.children[0].onclick=function (event) {
-        console.log(event.target);
-    }  
+    // // модернизация
+    // poleNumbers.children[0].onclick=function (event) {
+    //     console.log(event.target);
+    // }  
 
     twoCollumn.appendChild(poleNumbers);
     // добавить событие на нажитие input-radio, чтобы потом достать цифру для числа в игре
@@ -192,7 +232,6 @@ function gamesBullCows(blocContent) {
     // Строительство игровыого поля закончил
     // иницилизация игры 
     let computerNumber = getNumberInArray();//число от компьютера есть
-    // console.log("s");
     console.log(computerNumber);
         // действие пользоватедя "принять ход"
     const userStep = document.getElementById('gamesBullCows-btn-next');
@@ -200,13 +239,14 @@ function gamesBullCows(blocContent) {
         let numberAll = document.getElementsByClassName('number-itog');
         let userNumber = [numberAll[0].textContent, numberAll[1].textContent, numberAll[2].textContent, numberAll[3].textContent];
         console.log(userNumber);
-        console.log(`количество быков`,checkingNumberOfBulls(userNumber, computerNumber));
-        console.log(`количество коров`,checkingNumberOfCows(userNumber, computerNumber));
+        // console.log(`количество быков`,checkingNumberOfBulls(userNumber, computerNumber));
+        // console.log(`количество коров`,checkingNumberOfCows(userNumber, computerNumber));
         let blokLog = document.getElementById("logBullCows-error");// блок с ошибкой или победой
         let blocImgSetBull = document.getElementById("columns-item-content-bull"); // поменять но картинкой подпись у быка
         let blocImgSetCows = document.getElementById("columns-item-content-cows"); // поменять но картинкой подпись у коровы
         let blogLogStep = document.getElementById("logBullCows-log"); // для храниния ходов
         if(checkingNumberUser(userNumber) ){// проверка корректности. нет повторений
+            console.log("Ошибка корректности");
             blokLog.textContent = ""; 
             let tempBull = checkingNumberOfBulls(userNumber, computerNumber);
             let tempCows = checkingNumberOfCows(userNumber, computerNumber);
@@ -221,6 +261,47 @@ function gamesBullCows(blocContent) {
         }
 
     }
+        //действие пользователя начать игру сначала
+    const userNewGames = document.getElementById('gamesBullCows-btn-newGames');
+    userNewGames.onclick = function (){
+        console.log("New Games");
+        // иницилизация игры заново 
+        computerNumber = getNumberInArray();//число от компьютера есть
+        console.log(computerNumber);
+        let blokLog = document.getElementById("logBullCows-error");// блок с ошибкой или победой
+        blokLog.textContent = "";
+        let blocImgSetBull = document.getElementById("columns-item-content-bull"); // поменять но картинкой подпись у быка
+        blocImgSetBull.textContent = "0";
+        let blocImgSetCows = document.getElementById("columns-item-content-cows"); // поменять но картинкой подпись у коровы
+        blocImgSetCows.textContent = "0";
+        let blogLogStep = document.getElementById("logBullCows-log"); // для храниния ходов
+        console.log(blogLogStep);
+        while (blogLogStep.firstChild) {
+            blogLogStep.firstChild.remove();
+        }
+        //blogLogStep.textContent = "";
+        console.log(blogLogStep);
+
+    }
 
 
+}
+
+function about(blocContent) {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
+    let aboutHeader =  addMyElement("main", "about content", "about", "");
+    blocContent.append(aboutHeader);
+        // получаю локально поля для заполнения Автора
+    let forAbout = "";
+    readTextFile("./js/about.json", function(text){
+        var data = JSON.parse(text);
+        forAbout = data;
+    });
+    const titelAbout = addMyElement("div", "about-titel titel", "about-titel", forAbout.titel);
+    aboutHeader.appendChild(titelAbout);
+    // Добавление полк правило игры
+    const content = addMyElement("div", "about-content", "about-content", forAbout.content);
+    aboutHeader.appendChild(content);
 }
