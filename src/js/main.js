@@ -45,7 +45,7 @@ aboutClick.onclick = function () {
     while (blocContent.firstChild) {
         blocContent.firstChild.remove();
     }
-    //gamesNim(blocContent);// передаю узел куда нужно поместиться
+    about(blocContent);// передаю узел куда нужно поместиться
 };
 
 footer(myDoc);
@@ -235,7 +235,6 @@ function gamesBullCows(blocContent) {
     // Строительство игровыого поля закончил
     // иницилизация игры 
     let computerNumber = getNumberInArray();//число от компьютера есть
-    // console.log("s");
     console.log(computerNumber);
         // действие пользоватедя "принять ход"
     const userStep = document.getElementById('gamesBullCows-btn-next');
@@ -271,7 +270,6 @@ function gamesBullCows(blocContent) {
         console.log("New Games");
         // иницилизация игры заново 
         computerNumber = getNumberInArray();//число от компьютера есть
-        // console.log("s");
         console.log(computerNumber);
         let blokLog = document.getElementById("logBullCows-error");// блок с ошибкой или победой
         blokLog.textContent = "";
@@ -290,4 +288,23 @@ function gamesBullCows(blocContent) {
     }
 
 
+}
+
+function about(blocContent) {
+    while (blocContent.firstChild) {
+        blocContent.firstChild.remove();
+    }
+    let aboutHeader =  addMyElement("main", "about content", "about", "");
+    blocContent.append(aboutHeader);
+        // получаю локально поля для заполнения Автора
+    let forAbout = "";
+    readTextFile("./js/about.json", function(text){
+        var data = JSON.parse(text);
+        forAbout = data;
+    });
+    const titelAbout = addMyElement("div", "about-titel titel", "about-titel", forAbout.titel);
+    aboutHeader.appendChild(titelAbout);
+    // Добавление полк правило игры
+    const content = addMyElement("div", "about-content", "about-content", forAbout.content);
+    aboutHeader.appendChild(content);
 }
