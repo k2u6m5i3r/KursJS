@@ -18,9 +18,6 @@ function readTextFile(file, callback) {
 
 let myDoc = document.getElementById("wrapper"); //получаю точеку ввхода в HTML документ
 
-
-
-
 header(myDoc);
 
 let blocContent = addMyElement("div", "content", "content", "")
