@@ -5,12 +5,17 @@ body * {
 ._container{
     max-width: 920px;
     margin: 0 auto;
+
 }
 body{
     font-family: 'Istok Web', sans-serif;
     background-image: linear-gradient(to top, rgba(3, 11, 242, 0.857), rgba(62, 220, 23, 0.405)), url('./img/ground-2.png');
     background-size: cover;
-    
+
+}
+body, html{
+    height: 100%;
+
 }
 // Сброс ul ol 
 ul[class],
@@ -21,9 +26,10 @@ ol[class] {
     background-image: linear-gradient( 180deg, #65fdf0c7 10%, #8c9499c7 100%);
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 .content{
-    flex: 1 0 auto;
+    flex: 1 1 auto;
 }
 .titel{
     text-align: center;

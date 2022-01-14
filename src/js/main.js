@@ -18,6 +18,9 @@ function readTextFile(file, callback) {
 
 let myDoc = document.getElementById("wrapper"); //получаю точеку ввхода в HTML документ
 
+
+
+
 header(myDoc);
 
 let blocContent = addMyElement("div", "content", "content", "")
@@ -100,6 +103,7 @@ function gamesNim(myDoc) {
         //нарисовать каджый уровень
     //нарисовать первый уровень
     const gamesNimlevel_1 = document.getElementById("level-1-poleGames");
+    
     //нарисовать второй уровень
     const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
     //нарисовать третий уровень
