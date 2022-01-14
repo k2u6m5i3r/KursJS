@@ -94,7 +94,7 @@ function gamesNim(myDoc) {
     for(let i = 0; i <= 3; i++){//Создание 4х уровней игры Ним
         poleGamesNim.appendChild(addMyElement("div", `gamesNim-level level-${i+1}`, `gamesNim-level${i+1}`, ""));//перевый уровень
         poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-titel`, `level-${i+1}-titel`,`Уровень ${i+1}`));
-        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-poleGames`, `level-${i+1}-poleGames`, ""));
+        poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-poleGames poleGames`, `level-${i+1}-poleGames`, ""));
         poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-status`, `level-${i+1}-status`, forGamesNim.status));
         poleGamesNim.children[i].appendChild(addMyElementInput("button", `level-${i+1}-button-next`, `level-${i+1}-button-next`, forGamesNim.buttonNextStep));
         poleGamesNim.children[i].appendChild(addMyElementInput("button", `level-${i+1}-button-newGames`, `level-${i+1}-button-newGames`, forGamesNim.buttonNewGames));
@@ -103,7 +103,17 @@ function gamesNim(myDoc) {
         //нарисовать каджый уровень
     //нарисовать первый уровень
     const gamesNimlevel_1 = document.getElementById("level-1-poleGames");
-    
+    gamesNimlevel_1.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
+    const poleGamesItem1 = new DocumentFragment();
+    for(let i = 0 ; i < forGamesNim.gamesTur1 ; i++){
+        const tempCheck = addMyElementInput("checkbox", "a",`b-${i}`, "");
+        const tempImg = addMyElement("div", "d", `d-${i}`, "1");
+        const tempBlock = addMyElement("div", "h",`g-${i}`, "");
+        tempBlock.append(tempCheck);
+        tempBlock.append(tempImg);
+        poleGamesItem1.appendChild(tempBlock);
+    }
+    gamesNimlevel_1.children[0].appendChild(poleGamesItem1);
     //нарисовать второй уровень
     const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
     //нарисовать третий уровень
@@ -111,6 +121,7 @@ function gamesNim(myDoc) {
     //нарисовать четвёртый уровень
     const gamesNimlevel_4 = document.getElementById("level-4-poleGames");
         //отработать каждую кнопку на каджом уровне
+        // проверка что чекед https://only-to-top.ru/blog/coding/2019-12-22-checkbox-checked.html
     const level_1_buttonNext = document.getElementById("level-1-button-next");
     const level_1_buttonNewGames = document.getElementById("level-1-button-newGames");
     
@@ -123,17 +134,17 @@ function gamesNim(myDoc) {
     const level_4_buttonNext = document.getElementById("level-4-button-next");
     const level_4_buttonNewGames = document.getElementById("level-4-button-newGames");
 
-    console.log( level_1_buttonNext);
-    console.log( level_1_buttonNewGames);
+    // console.log( level_1_buttonNext);
+    // console.log( level_1_buttonNewGames);
     
-    console.log( level_2_buttonNext);
-    console.log( level_2_buttonNewGames);
+    // console.log( level_2_buttonNext);
+    // console.log( level_2_buttonNewGames);
 
-    console.log( level_3_buttonNext);
-    console.log( level_3_buttonNewGames);
+    // console.log( level_3_buttonNext);
+    // console.log( level_3_buttonNewGames);
 
-    console.log( level_4_buttonNext);
-    console.log( level_4_buttonNewGames);
+    // console.log( level_4_buttonNext);
+    // console.log( level_4_buttonNewGames);
 }
 
 function gamesBullCows(blocContent) {
