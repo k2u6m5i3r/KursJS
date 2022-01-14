@@ -107,7 +107,7 @@ function gamesNim(myDoc) {
     const poleGamesItem1 = new DocumentFragment();
     for(let i = 0 ; i < forGamesNim.gamesTur1 ; i++){
         const tempCheck = addMyElementInput("checkbox", "a",`b-${i}`, "");
-        const tempImg = addMyElement("div", "d", `d-${i}`, "1");
+        const tempImg = addMyElement("span", "d", `d-${i}`, "1");
         const tempBlock = addMyElement("div", "h",`g-${i}`, "");
         tempBlock.append(tempCheck);
         tempBlock.append(tempImg);
@@ -116,6 +116,19 @@ function gamesNim(myDoc) {
     gamesNimlevel_1.children[0].appendChild(poleGamesItem1);
     //нарисовать второй уровень
     const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
+    gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
+    const poleGamesItem2 = new DocumentFragment();
+    let level2Hep = forGamesNim.gamesTur2;
+    console.log(level2Hep)
+    for(let i = 0 ; i < forGamesNim.gamesTur2 ; i++){
+        const tempCheck = addMyElementInput("checkbox", "a",`b-${i}`, "");
+        const tempImg = addMyElement("span", "d", `d-${i}`, "1");
+        const tempBlock = addMyElement("div", "h",`g-${i}`, "");
+        tempBlock.append(tempCheck);
+        tempBlock.append(tempImg);
+        poleGamesItem2.appendChild(tempBlock);
+    }
+    gamesNimlevel_1.children[0].appendChild(poleGamesItem2);
     //нарисовать третий уровень
     const gamesNimlevel_3 = document.getElementById("level-3-poleGames");
     //нарисовать четвёртый уровень
@@ -123,6 +136,12 @@ function gamesNim(myDoc) {
         //отработать каждую кнопку на каджом уровне
         // проверка что чекед https://only-to-top.ru/blog/coding/2019-12-22-checkbox-checked.html
     const level_1_buttonNext = document.getElementById("level-1-button-next");
+    level_1_buttonNext.onclick = function () {
+        let info = document.getElementsByClassName('a');
+        for(let i = 0; i < info.length ; i++){
+            console.log(info[i].checked);
+        }
+    }
     const level_1_buttonNewGames = document.getElementById("level-1-button-newGames");
     
     const level_2_buttonNext = document.getElementById("level-2-button-next");
