@@ -92,7 +92,7 @@ function gamesNim(myDoc) {
     gamesNim.appendChild(paravilo);
     const poleGamesNim = addMyElement("div", "gamesNim-games level", "gamesNim-games", "");
     for(let i = 0; i <= 3; i++){//Создание 4х уровней игры Ним
-        poleGamesNim.appendChild(addMyElement("div", `gamesNim-level level-${i+1}`, `gamesNim-level${i+1}`, ""));//перевый уровень
+        poleGamesNim.appendChild(addMyElement("div", `gamesNim-level level-${i+1}`, `gamesNim-level-${i+1}`, ""));//перевый уровень
         poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-titel`, `level-${i+1}-titel`,`Уровень ${i+1}`));
         poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-poleGames poleGames`, `level-${i+1}-poleGames`, ""));
         poleGamesNim.children[i].appendChild(addMyElement("div", `level-${i+1}-status`, `level-${i+1}-status`, forGamesNim.status));
@@ -104,40 +104,69 @@ function gamesNim(myDoc) {
     //нарисовать первый уровень
     const gamesNimlevel_1 = document.getElementById("level-1-poleGames");
     gamesNimlevel_1.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-    const poleGamesItem1 = new DocumentFragment();
-    for(let i = 0 ; i < forGamesNim.gamesTur1 ; i++){
-        const tempCheck = addMyElementInput("checkbox", "a",`b-${i}`, "");
-        const tempImg = addMyElement("span", "d", `d-${i}`, "1");
-        const tempBlock = addMyElement("div", "h",`g-${i}`, "");
-        tempBlock.append(tempCheck);
-        tempBlock.append(tempImg);
-        poleGamesItem1.appendChild(tempBlock);
+    function gamesNimBuildItem(elementTurColumn, levelTur, numberItem) {
+        const poleGamesItemTemp = new DocumentFragment();
+        for(let i = 0 ; i < numberItem ; i++){
+            const tempCheck = addMyElementInput("checkbox", `checkbox-${levelTur}-${elementTurColumn}`,`chechbox-${levelTur}-${elementTurColumn}-${i}`, "");
+            const tempImg = addMyElement("lebel",`img-${levelTur}-${elementTurColumn}`, `img-${levelTur}-${elementTurColumn}-${i}`, "♦");
+            const tempBlock = addMyElement("div", "img-checkbox",`img-checkbox-${levelTur}-${elementTurColumn}-${i}`, "");
+            tempBlock.append(tempCheck);
+            tempBlock.append(tempImg);
+            poleGamesItemTemp.appendChild(tempBlock);
+        }
+        return poleGamesItemTemp;
     }
-    gamesNimlevel_1.children[0].appendChild(poleGamesItem1);
+    // function gamesNimBuildItem(elementTurColumn, levelTur, numberItem) {
+    //     const poleGamesItemTemp = new DocumentFragment();
+    //     for(let i = 0 ; i < numberItem ; i++){
+    //         const tempCheck = addMyElementInput("checkbox", `checkbox-${levelTur}-${elementTurColumn}`,`chechbox-${levelTur}-${elementTurColumn}-${i}`, "");
+    //         const tempImg = addMyElement("lebel",`img-${levelTur}-${elementTurColumn}`, `img-${levelTur}-${elementTurColumn}-${i}`, "♦");
+    //         const tempBlock = addMyElement("div", "img-checkbox",`img-checkbox-${levelTur}-${elementTurColumn}-${i}`, "");
+    //         tempBlock.append(tempCheck);
+    //         tempBlock.append(tempImg);
+    //         poleGamesItemTemp.appendChild(tempBlock);
+    //     }
+    //     return poleGamesItemTemp;
+    // }
+    gamesNimlevel_1.children[0].appendChild(gamesNimBuildItem("1", "1", 4));
+
+    
     //нарисовать второй уровень
     const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
     gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-    const poleGamesItem2 = new DocumentFragment();
+    gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
+    
     let level2Hep = forGamesNim.gamesTur2;
-    console.log(level2Hep)
-    for(let i = 0 ; i < forGamesNim.gamesTur2 ; i++){
-        const tempCheck = addMyElementInput("checkbox", "a",`b-${i}`, "");
-        const tempImg = addMyElement("span", "d", `d-${i}`, "1");
-        const tempBlock = addMyElement("div", "h",`g-${i}`, "");
-        tempBlock.append(tempCheck);
-        tempBlock.append(tempImg);
-        poleGamesItem2.appendChild(tempBlock);
-    }
-    gamesNimlevel_1.children[0].appendChild(poleGamesItem2);
+    
+    
+    gamesNimlevel_2.children[0].appendChild(gamesNimBuildItem("2", "1", 1));
+    gamesNimlevel_2.children[1].appendChild(gamesNimBuildItem("2", "2", 4));
     //нарисовать третий уровень
     const gamesNimlevel_3 = document.getElementById("level-3-poleGames");
+    gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
+    gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
+    
+    
+    gamesNimlevel_3.children[0].appendChild(gamesNimBuildItem("3", "1", 2));
+    gamesNimlevel_3.children[1].appendChild(gamesNimBuildItem("3", "2", 5));
+
     //нарисовать четвёртый уровень
     const gamesNimlevel_4 = document.getElementById("level-4-poleGames");
+
+    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
+    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
+    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-3", ""));    
+    
+    gamesNimlevel_4.children[0].appendChild(gamesNimBuildItem("4", "1", 3));
+    gamesNimlevel_4.children[1].appendChild(gamesNimBuildItem("4", "2", 5));
+    gamesNimlevel_4.children[2].appendChild(gamesNimBuildItem("4", "3", 7));
+
+
         //отработать каждую кнопку на каджом уровне
         // проверка что чекед https://only-to-top.ru/blog/coding/2019-12-22-checkbox-checked.html
     const level_1_buttonNext = document.getElementById("level-1-button-next");
     level_1_buttonNext.onclick = function () {
-        let info = document.getElementsByClassName('a');
+        let info = document.getElementsByClassName('checkbox-1-1');
         for(let i = 0; i < info.length ; i++){
             console.log(info[i].checked);
         }
