@@ -174,3 +174,121 @@ input {
     font-family:inherit;
     font-size: inherit;
 }
+
+
+.gamesNim {
+    &-titel{
+
+    }
+    &-pravilo {
+
+    }
+    &-games {
+    
+    }
+    &-level {
+        .level{
+            &-1{
+
+            }
+        }
+        .poleGames {
+            display: flex;
+            // justify-content: space-around;
+            &-item {
+                min-width: 120px;
+                align-self: flex-end;
+
+            }
+        }
+    }
+
+}
+
+
+// .level-1 {
+// }
+// .level-1-titel {
+// }
+// .level-1-poleGames {
+// }
+// .poleGames {
+// }
+// .poleGames-item {
+// }
+// .img-checkbox {
+// }
+// .checkbox-1-1 {
+// }
+// .img-1-1 {
+// }
+// .level-1-status {
+// }
+// .level-1-button-next {
+// }
+// .level-1-button-newGames {
+// }
+// .level-2 {
+// }
+// .level-2-titel {
+// }
+// .level-2-poleGames {
+// }
+// .checkbox-1-2 {
+// }
+// .img-1-2 {
+// }
+// .checkbox-2-2 {
+// }
+// .img-2-2 {
+// }
+// .level-2-status {
+// }
+// .level-2-button-next {
+// }
+// .level-2-button-newGames {
+// }
+// .level-3 {
+// }
+// .level-3-titel {
+// }
+// .level-3-poleGames {
+// }
+// .checkbox-1-3 {
+// }
+// .img-1-3 {
+// }
+// .checkbox-2-3 {
+// }
+// .img-2-3 {
+// }
+// .level-3-status {
+// }
+// .level-3-button-next {
+// }
+// .level-3-button-newGames {
+// }
+// .level-4 {
+// }
+// .level-4-titel {
+// }
+// .level-4-poleGames {
+// }
+// .checkbox-1-4 {
+// }
+// .img-1-4 {
+// }
+// .checkbox-2-4 {
+// }
+// .img-2-4 {
+// }
+// .checkbox-3-4 {
+// }
+// .img-3-4 {
+// }
+// .level-4-status {
+// }
+// .level-4-button-next {
+// }
+// .level-4-button-newGames {
+// }
