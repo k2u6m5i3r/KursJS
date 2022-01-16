@@ -15,7 +15,7 @@ body{
 }
 body, html{
     height: 100%;
-
+    margin: 0;
 }
 // Сброс ul ol 
 ul[class],
@@ -65,6 +65,7 @@ ol[class] {
 }
 .footer{
     &-content{
+        padding: 10px;
         text-align: center;
     }
 }
@@ -167,7 +168,7 @@ ol[class] {
 
 
 .button{
-    margin: 15px;
+    margin:0 10px;
 }
 
 input {
