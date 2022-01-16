@@ -184,18 +184,28 @@ input {
 
     }
     &-games {
-    
+        display: flex;
+        flex-wrap: wrap;
     }
     &-level {
+        padding: 5px;
+        width: 350px;
+        
+        
         .level{
+            
             &-1{
 
             }
         }
         .poleGames {
             display: flex;
+            height: 150px;
             // justify-content: space-around;
             &-item {
+                label{
+                    display: block;
+                }
                 min-width: 120px;
                 align-self: flex-end;
 

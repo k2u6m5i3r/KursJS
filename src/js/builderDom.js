@@ -15,5 +15,20 @@ function addMyElementInput(typeInput, typeClass, typeId, content){
     result.id = typeId;
     return result;
 }
-
-export {addMyElement, addMyElementInput};
+function removeChildrenAll(nodeForChildren){
+    while (nodeForChildren.firstChild) {
+        nodeForChildren.firstChild.remove();
+    }
+}
+function removeChildren(nodeForChildren, number){
+    for(let i=0; nodeForChildren.lastChild; i++ ) {
+        console.log("remove Child")
+        if(i < number){
+            nodeForChildren.lastChild.remove();
+        } else {
+            break;
+        }
+        
+    }
+}
+export {addMyElement, addMyElementInput, removeChildrenAll, removeChildren};

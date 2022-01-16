@@ -1,6 +1,7 @@
 //here will by JavaScript code ...
-import { addMyElement, addMyElementInput }  from './builderDom.js';
+import { addMyElement, addMyElementInput, removeChildrenAll, removeChildren }  from './builderDom.js';
 import {getNumberInArray,  checkingNumberOfCows, checkingNumberOfBulls, checkingNumberUser} from './gamesBullCows.js';
+import {getCheckedItem, heapXor,stepComputerTwoColumns} from './gamesNim.js';
 
 //JSON подгружать данные
 
@@ -17,10 +18,6 @@ function readTextFile(file, callback) {
 }
 
 let myDoc = document.getElementById("wrapper"); //получаю точеку ввхода в HTML документ
-
-
-
-
 header(myDoc);
 
 let blocContent = addMyElement("div", "content", "content", "")
@@ -28,23 +25,17 @@ myDoc.appendChild(blocContent);
 
 const gamesBullCowsHeaderClick = document.getElementById("gamesBullCowsHeader"); //нахожу кнопку "Быки и коровы" и вызываю функцию построить игру
 gamesBullCowsHeaderClick.onclick = function () {
-    while (blocContent.firstChild) {
-        blocContent.firstChild.remove();
-    }
+    removeChildrenAll(blocContent);
     gamesBullCows(blocContent);// передаю узел куда нужно поместиться
 };
 const gamesNimClick = document.getElementById("gamesNimHeader"); //нахожу кнопку "Ним" и вызываю функцию построить игру
 gamesNimClick.onclick = function () {
-    while (blocContent.firstChild) {
-        blocContent.firstChild.remove();
-    }
+    removeChildrenAll(blocContent);
     gamesNim(blocContent);// передаю узел куда нужно поместиться
 };
 const aboutClick = document.getElementById("aboutHeader"); //нахожу кнопку "Ним" и вызываю функцию построить игру
 aboutClick.onclick = function () {
-    while (blocContent.firstChild) {
-        blocContent.firstChild.remove();
-    }
+    removeChildrenAll(blocContent);
     about(blocContent);// передаю узел куда нужно поместиться
 };
 
@@ -103,38 +94,39 @@ function gamesNim(myDoc) {
         //нарисовать каджый уровень
     //нарисовать первый уровень
     const gamesNimlevel_1 = document.getElementById("level-1-poleGames");
-    gamesNimlevel_1.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
+    gamesNimlevel_1.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-1", ""));
+    // function addDigit(numberDigit){
+    //     let tempDigit = new DocumentFragment();
+    //     for(let i =0; i< 10; i++){
+    //         let lb = document.createElement('label');
+    //         lb.setAttribute("for", `number-${numberDigit}-${i}`);  
+    //         lb.textContent =`${i}`;
+    //         lb.appendChild(addMyElementInput("radio",`number-${numberDigit}`,`number-${numberDigit}-${i}`, ""+i ));
+    //         tempDigit.appendChild(lb);
+    //     }
+    //     tempDigit.appendChild(addMyElement("div", `number-${numberDigit}-itog number-itog`,`number-${numberDigit}-itog`, `${numberDigit}` ));
+    //     return tempDigit;
+    // }
     function gamesNimBuildItem(elementTurColumn, levelTur, numberItem) {
         const poleGamesItemTemp = new DocumentFragment();
         for(let i = 0 ; i < numberItem ; i++){
-            const tempCheck = addMyElementInput("checkbox", `checkbox-${levelTur}-${elementTurColumn}`,`chechbox-${levelTur}-${elementTurColumn}-${i}`, "");
-            const tempImg = addMyElement("lebel",`img-${levelTur}-${elementTurColumn}`, `img-${levelTur}-${elementTurColumn}-${i}`, "♦");
-            const tempBlock = addMyElement("div", "img-checkbox",`img-checkbox-${levelTur}-${elementTurColumn}-${i}`, "");
-            tempBlock.append(tempCheck);
-            tempBlock.append(tempImg);
-            poleGamesItemTemp.appendChild(tempBlock);
+            let lb = document.createElement('label');
+            lb.setAttribute("for", `checkbox-${levelTur}-${elementTurColumn}`);
+            lb.textContent = "♦";
+            lb.className = `img-${levelTur}-${elementTurColumn}`;
+            lb.id = `img-${levelTur}-${elementTurColumn}-${i}`;
+            lb.appendChild(addMyElementInput("checkbox", `checkbox-${levelTur}-${elementTurColumn}`,`chechbox-${levelTur}-${elementTurColumn}-${i}`, ""));
+            poleGamesItemTemp.appendChild(lb);
         }
         return poleGamesItemTemp;
     }
-    // function gamesNimBuildItem(elementTurColumn, levelTur, numberItem) {
-    //     const poleGamesItemTemp = new DocumentFragment();
-    //     for(let i = 0 ; i < numberItem ; i++){
-    //         const tempCheck = addMyElementInput("checkbox", `checkbox-${levelTur}-${elementTurColumn}`,`chechbox-${levelTur}-${elementTurColumn}-${i}`, "");
-    //         const tempImg = addMyElement("lebel",`img-${levelTur}-${elementTurColumn}`, `img-${levelTur}-${elementTurColumn}-${i}`, "♦");
-    //         const tempBlock = addMyElement("div", "img-checkbox",`img-checkbox-${levelTur}-${elementTurColumn}-${i}`, "");
-    //         tempBlock.append(tempCheck);
-    //         tempBlock.append(tempImg);
-    //         poleGamesItemTemp.appendChild(tempBlock);
-    //     }
-    //     return poleGamesItemTemp;
-    // }
     gamesNimlevel_1.children[0].appendChild(gamesNimBuildItem("1", "1", 4));
 
     
     //нарисовать второй уровень
     const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
-    gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-    gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
+    gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-2", ""));
+    gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2-2", ""));
     
     let level2Hep = forGamesNim.gamesTur2;
     
@@ -143,8 +135,8 @@ function gamesNim(myDoc) {
     gamesNimlevel_2.children[1].appendChild(gamesNimBuildItem("2", "2", 4));
     //нарисовать третий уровень
     const gamesNimlevel_3 = document.getElementById("level-3-poleGames");
-    gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-    gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
+    gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-3", ""));
+    gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2-3", ""));
     
     
     gamesNimlevel_3.children[0].appendChild(gamesNimBuildItem("3", "1", 2));
@@ -153,9 +145,9 @@ function gamesNim(myDoc) {
     //нарисовать четвёртый уровень
     const gamesNimlevel_4 = document.getElementById("level-4-poleGames");
 
-    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
-    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-3", ""));    
+    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-4", ""));
+    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2-4", ""));
+    gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-3-4", ""));    
     
     gamesNimlevel_4.children[0].appendChild(gamesNimBuildItem("4", "1", 3));
     gamesNimlevel_4.children[1].appendChild(gamesNimBuildItem("4", "2", 5));
@@ -163,57 +155,113 @@ function gamesNim(myDoc) {
 
 
         //отработать каждую кнопку на каджом уровне
-        // проверка что чекед https://only-to-top.ru/blog/coding/2019-12-22-checkbox-checked.html
     const level_1_buttonNext = document.getElementById("level-1-button-next");
     level_1_buttonNext.onclick = function () {
-        console.log('уровень 1');
-        let info = document.getElementsByClassName('checkbox-1-1');
-        for(let i = 0; i < info.length ; i++){
-            console.log(info[i].checked);
+        //console.log('уровень 1');
+        const statusGamesLevel1 = document.getElementById('level-1-status');       
+        let info = document.getElementsByClassName('checkbox-1-1');// пользоватеьл выбрал checkes в первой колонке
+        let sizeHeepColumn= info.length;// размер кучи первой
+        let checkedForUser = getCheckedItem(info);// пользователь выбрал столько предметов
+        if( checkedForUser != 0 ){
+            for(let i = 0; i < info.length ; i++){
+                console.log(info[i].checked);
+                if(info[i].checked){
+                    info[i].checked = false;
+                }
+            }
+            const poleGamesNimLev1Item1 = document.getElementById("poleGames-item-1-1");//откуда удалять ходы потзователя 
+            removeChildren(poleGamesNimLev1Item1, checkedForUser);// удаляю узлы в количестве которое выбрал пользователь
+            if(checkedForUser == 4){// пользователь забрал всё и он выграл
+                statusGamesLevel1.textContent = forGamesNim.result_win;
+            } else {
+                statusGamesLevel1.textContent = forGamesNim.result_fail;
+                removeChildren(poleGamesNimLev1Item1,sizeHeepColumn-checkedForUser);// удаляю узлы в количестве sizeHeepColumn-checkedForUser 
+            }  
+        } else {
+            statusGamesLevel1.textContent = forGamesNim.status_error2;
         }
+ 
     }
     const level_1_buttonNewGames = document.getElementById("level-1-button-newGames");
     level_1_buttonNewGames.onclick = function () {
             //нарисовать по новому первый уровень
         const gamesNimlevel_1 = document.getElementById("level-1-poleGames");
         // удалить прошлые узлы
-        while (gamesNimlevel_1.firstChild) {
-            gamesNimlevel_1.firstChild.remove();
-        }
+        removeChildrenAll(gamesNimlevel_1);
         //сбросить статусную строку
         const statusGamesLevel1 = document.getElementById('level-1-status');
         statusGamesLevel1.textContent = "Ваш ход";
 
-        gamesNimlevel_1.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
+        gamesNimlevel_1.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-1", ""));
         gamesNimlevel_1.children[0].appendChild(gamesNimBuildItem("1", "1", 4));
     }
 
     const level_2_buttonNext = document.getElementById("level-2-button-next");
     level_2_buttonNext.onclick = function(){
         console.log('уровень 2');
+        const statusGamesLevel2 = document.getElementById(`level-2-status`); //поле куда отображать статус игры
         let info_2_1 = document.getElementsByClassName('checkbox-1-2');
-        for(let i = 0; i < info_2_1.length ; i++){
-            console.log(info_2_1[i].checked);
-        }
+        let checkedForUserColumn1 = getCheckedItem(info_2_1);// пользователь выбрал столько предметов из первой кучи
         let info_2_2 = document.getElementsByClassName('checkbox-2-2');
-        for(let i = 0; i < info_2_2.length ; i++){
-            console.log(info_2_2[i].checked);
+        let checkedForUserColumn2 = getCheckedItem(info_2_2);// пользователь выбрал столько предметов из второй кучи
+        const poleGamesNimLev2Item1 = document.getElementById("poleGames-item-1-2");//откуда удалять ходы потзователя
+        const poleGamesNimLev2Item2 = document.getElementById("poleGames-item-2-2");//откуда удалять ходы потзователя
+        if(info_2_1.length == 1 && info_2_2.length== 0){
+            statusGamesLevel2.textContent = forGamesNim.result_win;
+        }else {
+            if(checkedForUserColumn1 ==0 && checkedForUserColumn2 ==0){ // пользователь ничего не выбрал
+                statusGamesLevel2.textContent = forGamesNim.status_error2;
+            } else {        
+                if(checkedForUserColumn1!=0 && checkedForUserColumn2!=0){ // пользователь выбрал из двух колонок 
+                    statusGamesLevel2.textContent = forGamesNim.status_error1;
+                } else {
+                    statusGamesLevel2.textContent = "Компьютер!";// Убрать
+                    if(info_2_1.length == checkedForUserColumn1 || info_2_2.length== checkedForUserColumn2){// Пользователь забрал одну из куч целиком, Он проиграл
+                        removeChildren(poleGamesNimLev2Item1, info_2_1.length);
+                        removeChildren(poleGamesNimLev2Item2, info_2_2.length);
+                        statusGamesLevel2.textContent = forGamesNim.result_fail;
+                    }else {
+                        if(checkedForUserColumn1!=0){
+                            for(let i = 0; i < info_2_1.length ; i++){
+                                if(info_2_1[i].checked){
+                                    info_2_1[i].checked = false;
+                                }
+                            }
+                            removeChildren(poleGamesNimLev2Item1, checkedForUserColumn1);
+                        }
+                        if(checkedForUserColumn2!=0){
+                            for(let i = 0; i < info_2_2.length ; i++){
+                                if(info_2_2[i].checked){
+                                    info_2_2[i].checked = false;
+                                }
+                            }
+                            removeChildren(poleGamesNimLev2Item2, checkedForUserColumn2);
+                        }
+                        let info_2_1_new = document.getElementsByClassName('checkbox-1-2');
+                        let info_2_2_new = document.getElementsByClassName('checkbox-2-2');
+                        let newStep = stepComputerTwoColumns([info_2_1_new.length,info_2_2_new.length ]);
+                        removeChildren(poleGamesNimLev2Item1, info_2_1.length - newStep[0]);
+                        removeChildren(poleGamesNimLev2Item2, info_2_2.length - newStep[1]);
+                    }
+                    
+    
+                }
+            }
         }
+        
 
     }
     const level_2_buttonNewGames = document.getElementById("level-2-button-newGames");
     level_2_buttonNewGames.onclick = function(){
         const gamesNimlevel_2 = document.getElementById("level-2-poleGames");
         // удалить прошлые узлы
-        while (gamesNimlevel_2.firstChild) {
-            gamesNimlevel_2.firstChild.remove();
-        }
+        removeChildrenAll(gamesNimlevel_2);
         //сбросить статусную строку
         const statusGamesLevel2 = document.getElementById('level-2-status');
         statusGamesLevel2.textContent = "Ваш ход";
 
-        gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-        gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
+        gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-2", ""));
+        gamesNimlevel_2.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2-2", ""));
         let level2Hep = forGamesNim.gamesTur2;
         gamesNimlevel_2.children[0].appendChild(gamesNimBuildItem("2", "1", 1));
         gamesNimlevel_2.children[1].appendChild(gamesNimBuildItem("2", "2", 4));    
@@ -236,15 +284,13 @@ function gamesNim(myDoc) {
     level_3_buttonNewGames.onclick = function(){
         const gamesNimlevel_3 = document.getElementById("level-3-poleGames");
         // удалить прошлые узлы
-        while (gamesNimlevel_3.firstChild) {
-            gamesNimlevel_3.firstChild.remove();
-        }
+        removeChildrenAll(gamesNimlevel_3);
         //сбросить статусную строку
         const statusGamesLevel3 = document.getElementById('level-3-status');
         statusGamesLevel3.textContent = "Ваш ход";
 
-        gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-        gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
+        gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-3", ""));
+        gamesNimlevel_3.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2-3", ""));
         gamesNimlevel_3.children[0].appendChild(gamesNimBuildItem("3", "1", 2));
         gamesNimlevel_3.children[1].appendChild(gamesNimBuildItem("3", "2", 5));       
     }
@@ -270,16 +316,14 @@ function gamesNim(myDoc) {
             //нарисовать четвёртый уровень
         const gamesNimlevel_4 = document.getElementById("level-4-poleGames");
         // удалить прошлые узлы
-        while (gamesNimlevel_4.firstChild) {
-            gamesNimlevel_4.firstChild.remove();
-        }
+        removeChildrenAll(gamesNimlevel_4);
         //сбросить статусную строку
         const statusGamesLevel4 = document.getElementById('level-4-status');
         statusGamesLevel4.textContent = "Ваш ход";
 
-        gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1", ""));
-        gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2", ""));
-        gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-3", ""));    
+        gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-1-4", ""));
+        gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-2-4", ""));
+        gamesNimlevel_4.appendChild(addMyElement("div","poleGames-item", "poleGames-item-3-4", ""));    
         gamesNimlevel_4.children[0].appendChild(gamesNimBuildItem("4", "1", 3));
         gamesNimlevel_4.children[1].appendChild(gamesNimBuildItem("4", "2", 5));
         gamesNimlevel_4.children[2].appendChild(gamesNimBuildItem("4", "3", 7));
@@ -432,9 +476,7 @@ function gamesBullCows(blocContent) {
         blocImgSetCows.textContent = "0";
         let blogLogStep = document.getElementById("logBullCows-log"); // для храниния ходов
         console.log(blogLogStep);
-        while (blogLogStep.firstChild) {
-            blogLogStep.firstChild.remove();
-        }
+        removeChildrenAll(blogLogStep);
         //blogLogStep.textContent = "";
         console.log(blogLogStep);
 
@@ -444,9 +486,7 @@ function gamesBullCows(blocContent) {
 }
 
 function about(blocContent) {
-    while (blocContent.firstChild) {
-        blocContent.firstChild.remove();
-    }
+    removeChildren(blocContent);
     let aboutHeader =  addMyElement("main", "about content", "about", "");
     blocContent.append(aboutHeader);
         // получаю локально поля для заполнения Автора
