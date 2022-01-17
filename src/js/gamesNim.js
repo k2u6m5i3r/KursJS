@@ -18,8 +18,6 @@ function gamesNimInic() {
 
 
 gamesNimInic();
-console.log(heapSizes);
-console.log(heapXor(heapSizes));
 
 
 function heapXor(heapSizes) { // вспомогательная функция для быстрого нахождения XOR куч
@@ -43,9 +41,8 @@ function stepComputerTwoColumns(arrayHeep) {// метод как ходит ко
     for(let i= 0; i< arrayHeep.length; i++) {
         newHeepsStep.push(arrayHeep[i]);
     }
-
-    console.log(arrayHeep);
-    console.log(heapXor(newHeepsStep));
+    // console.log(arrayHeep);
+    // console.log(heapXor(newHeepsStep));
     let temp=newHeepsStep.length;
     for(let i = 0; newHeepsStep[1] >=0 ; i++ ){
         newHeepsStep[1]--;
@@ -53,7 +50,7 @@ function stepComputerTwoColumns(arrayHeep) {// метод как ходит ко
             break;
         }
     }
-    console.log(newHeepsStep);
+    // console.log(newHeepsStep);
     // метод возращает массив ходов от компьютера 
     return newHeepsStep;
 }
