@@ -22,13 +22,11 @@ function removeChildrenAll(nodeForChildren){
 }
 function removeChildren(nodeForChildren, number){
     for(let i=0; nodeForChildren.lastChild; i++ ) {
-        console.log("remove Child")
         if(i < number){
             nodeForChildren.lastChild.remove();
         } else {
             break;
-        }
-        
+        }  
     }
 }
 export {addMyElement, addMyElementInput, removeChildrenAll, removeChildren};

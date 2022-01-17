@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Istok Web', sans-serif;
-  background-image: linear-gradient(to top, rgba(3, 11, 242, 0.857), rgba(62, 220, 23, 0.405)), url("../img/ground-2.png");
+  background-image: linear-gradient(to top, rgba(3, 11, 242, 0.857), rgba(62, 220, 23, 0.405)), url("../../img/ground-2.png");
   background-size: cover; }
 
 body, html {
@@ -29,7 +29,7 @@ body, html {
   align-items: center;
   height: 80px; }
   .header-logo {
-    background: no-repeat url("../img/logotip_v2.png");
+    background: no-repeat url("../../img/logotip_v2.png");
     background-size: contain;
     height: 100%;
     width: 25%; }
@@ -58,11 +58,11 @@ body, html {
   flex-wrap: wrap;
   padding: 25px; }
   .gamesBullCows-columns-item #columns-item-image-bull {
-    background: no-repeat url("../img/bull.png");
+    background: no-repeat url("../../img/bull.png");
     width: 128px;
     height: 128px; }
   .gamesBullCows-columns-item #columns-item-image-cows {
-    background: no-repeat url("../img/cows.png");
+    background: no-repeat url("../../img/cows.png");
     background-size: contain;
     width: 128px;
     height: 128px; }
@@ -145,7 +145,7 @@ input {
     align-items: center;
     height: 80px; }
     .header-logo {
-      background: no-repeat url("../img/logotip_v2.png");
+      background: no-repeat url("../../img/logotip_v2.png");
       background-size: contain; }
     .header .menu {
       display: flex;
